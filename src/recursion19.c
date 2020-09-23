@@ -19,24 +19,36 @@
 
 using namespace std;
 
-bool isValidEmail(string email){
+bool isValidEmail(string email)
+{
     // スペースの確認
-// ダメならfalseを返す
-// @1つのみの判定
-// ダメならfalseを返す
-// @のナンバー取得してその後に.があるのか確認する
+    // ダメならfalseを返す OK
+
+    // forで全部の文字確認して@@と@.の確認
+    // @1つのみの判定
+    // ダメならfalseを返す
+    // @のナンバー取得してその後に.があるのか確認する
+    // lastから検索することで回避できる
+    //
+    // 後ろから検索するやつと
+    // forで全検索して@を1で足していって＝2になったらOK
 
     string blank = " ";
     int blankCheck = email.find(blank);
     int existBlank = -1;
     string at = "@";
-    int atCheck = email.find(at);
-    int existAt = -1;
+    string dot = ".";
+    int atCheck = email.rfind(at);
+    int dotCheck = email.rfind(dot);
+    bool dotAfterAtCheck = dot > at;
 
-    if(blankCheck == existBlank){
+    if (blankCheck == existBlank)
+    {
         return false;
     }
-    if(atCheck){
-
+    if (dotAfterAtCheck == true)
+    {
+        return false;
     }
+    return true;
 }

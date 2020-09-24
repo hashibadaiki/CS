@@ -12,6 +12,50 @@
 // ダメならfalseを返す
 // @のナンバー取得してその後に.があるのか確認する
 
+// 提出コード
+#include <iostream>
+#include <string>
+#include <cmath>
+
+using namespace std;
+
+bool isValidEmail(string email)
+{
+    string blank = " ";
+    int blankCheck = email.find(blank);
+    int existBlank = -1;
+    string at = "@";
+    string dot = ".";
+    int atCheck = email.rfind(at);
+    int dotCheck = email.rfind(dot);
+
+    if (blankCheck != existBlank)
+    {
+        return false;
+    }
+
+    if (dotCheck < atCheck)
+    {
+        return false;
+    }
+
+    std::string ans = "";
+    for (int i = 0; i < email.size(); i++)
+    {
+        string targetChar = string(1, email[i]);
+        if (targetChar == "@")
+        {
+            targetChar = "1";
+            ans += targetChar;
+        }
+    }
+    if (ans != "1")
+    {
+        return false;
+    }
+    return true;
+}
+
 // memo
 #include <iostream>
 #include <string>
@@ -44,11 +88,40 @@ bool isValidEmail(string email)
 
     if (blankCheck == existBlank)
     {
-        return false;
+        return printf("ブランク");
     }
-    if (dotAfterAtCheck == true)
+    else if (dotAfterAtCheck == true)
     {
-        return false;
+        return printf("@のあと");
     }
+    else
+    {
+        return printf("その他");
+    }
+}
+
+// これでブランクある無し判定できた
+if (blankCheck != existBlank)
+{
+    printf("ブランクがある");
+    return blankCheck;
+}
+else if ()
+{
+    printf("ブランクがない");
+    return blankCheck;
+}
+
+// @ .の位置関係を確認した
+if (dotAfterAtCheck == true)
+{
+    printf("atは %d です。\n", atCheck);
+    printf("dotは %d です。\n", dotCheck);
+    return false;
+}
+else
+{
+    printf("atは %d です。\n", atCheck);
+    printf("dotは %d です。\n", dotCheck);
     return true;
 }

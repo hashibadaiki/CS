@@ -11,3 +11,17 @@
     // 前半と後半に文字列を分ける
     // 後半の文字列をソートする
     // 同じか判定する
+
+// エラー出ている。問い合わせ中
+
+#include <iostream>
+#include <string>
+#include <cmath>
+
+using namespace std;
+
+bool isPalindrome(string stringInput){
+    stringInput.remove(stringInput.begin(), stringInput.end(),' ');
+    printf("%c\n", stringInput);
+    return true;
+}

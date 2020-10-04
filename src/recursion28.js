@@ -1,26 +1,21 @@
-// 人数peopleと宿泊日数dayが与えられるので、民泊の合計金額を返す、
-// vacationRentalという関数を作成してください
+// Stephanieの家では残念ながら毎年サンタクロースは
+// 家にプレゼントを運んできません。毎年プレゼントを待ちながら、
+// 日付を観察するとサンタクロースが家に来るのは閏年だとわかりました。
+// ある年yearが与えられるので、閏年かどうかを判定する、
+// isLeapYearという関数を作成してください。
+// 閏年の条件は以下の通りです。
 
-// 3泊以下で80$
-// 4で60$
-// 10で50$
-
-// 各12%の清掃費加算
-// 全体に8％の税金
-// 少数は切り捨て
-
-function vacationRental(people, day) {
-  let hotelFee = 0;
-  const cleaningFee = 1.12;
-  const tax = 1.08;
-  if (3 >= day) {
-    hotelFee = 80;
-  } else if (10 <= day) {
-    hotelFee = 50;
+function isLeapYear(year) {
+  const leapYear = year % 4 === 0;
+  const specialLeapYear = year % 400 === 0;
+  const notLeapYear = year % 100 === 0;
+  if (specialLeapYear) {
+    return true;
+  } else if (notLeapYear) {
+    return false;
+  } else if (leapYear) {
+    return true;
   } else {
-    hotelFee = 60;
+    return false;
   }
-  const totalHotelFee = hotelFee * cleaningFee;
-  const totalFee = Math.floor(people * day * totalHotelFee * tax);
-  return totalFee;
 }
